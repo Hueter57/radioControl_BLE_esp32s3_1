@@ -4,6 +4,9 @@
 #include <BLEServer.h>
 #include <BLEUtils.h>
 
+#include <Assign.hpp>
+#include <Motor/DG01D_E.hpp>
+#include <System.hpp>
 
 #include <iostream>
 using namespace std;
@@ -15,6 +18,12 @@ BLECharacteristic *pTxCharacteristic;
 bool               deviceConnected    = false;
 bool               oldDeviceConnected = false;
 uint8_t            txValue[BUFFER]    = "";
+
+Motor::DG01D_E left_motor{assign::LEFT_MOTOR_PWM_PIN1,     assign::LEFT_MOTOR_PWM_PIN2, assign::LEFT_MOTOR_ENCODER_PIN1,
+                          assign::LEFT_MOTOR_ENCODER_PIN2, assign::LEFT_MOTOR_PWM_CH1,  assign::LEFT_MOTOR_PWM_CH2};
+Motor::DG01D_E right_motor{assign::RIGHT_MOTOR_PWM_PIN1,     assign::RIGHT_MOTOR_PWM_PIN2,
+                           assign::RIGHT_MOTOR_ENCODER_PIN1, assign::RIGHT_MOTOR_ENCODER_PIN2,
+                           assign::RIGHT_MOTOR_PWM_CH1,      assign::RIGHT_MOTOR_PWM_CH2};
 
 // See the following for generating UUIDs:
 // https://www.uuidgenerator.net/
@@ -44,6 +53,7 @@ class MyCallbacks : public BLECharacteristicCallbacks {
                 Serial.print(rxValue[i]);
                 s += rxValue[i];
             }
+            System::changeSpeedMotors(s.toInt(), left_motor, right_motor);
             Serial.println();
             Serial.println("*********");
         }
