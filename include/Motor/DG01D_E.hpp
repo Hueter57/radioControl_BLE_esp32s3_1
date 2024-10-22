@@ -6,7 +6,7 @@ namespace Motor {
 
 class DG01D_E {
   private:
-    Motor::MotorDriver::TB6612 motorDriver;
+    Motor::MotorDriver::TB6612 motor_driver;
     int                        input_pin1;
     int                        input_pin2;
 
