@@ -2,7 +2,7 @@
 #include <BLE2902.h>
 #include <BLEDevice.h>
 #include <BLEServer.h>
-#include <BLEUtils.h>
+// #include <BLEUtils.h>
 
 #include <Assign.hpp>
 #include <Motor/DG01D_E.hpp>
@@ -89,8 +89,8 @@ void setup() {
     // Start advertising
     pServer->getAdvertising()->start();
     Serial.println("Waiting a client connection to notify...");
-    // BLESecurity *pSecurity = new BLESecurity();
-    // pSecurity->setStaticPIN(123456);
+    BLESecurity *pSecurity = new BLESecurity();
+    pSecurity->setStaticPIN(123456);
 }
 
 void loop() {

@@ -7,20 +7,20 @@ auto System::changeSpeedMotors(int value, Motor::DG01D_E l_motor, Motor::DG01D_E
         r_motor.changeSpeed(0);
         break;
     case 1:
-        l_motor.changeSpeed(200);
-        r_motor.changeSpeed(200);
+        l_motor.changeSpeed(1000);
+        r_motor.changeSpeed(1000);
         break;
     case 2:
-        l_motor.changeSpeed(-200);
-        r_motor.changeSpeed(-200);
+        l_motor.changeSpeed(-1000);
+        r_motor.changeSpeed(-1000);
         break;
     case 3:
-        l_motor.changeSpeed(200);
-        r_motor.changeSpeed(-200);
+        l_motor.changeSpeed(1000);
+        r_motor.changeSpeed(-1000);
         break;
     case 4:
-        l_motor.changeSpeed(-200);
-        r_motor.changeSpeed(200);
+        l_motor.changeSpeed(-1000);
+        r_motor.changeSpeed(1000);
         break;
 
     default:

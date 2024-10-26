@@ -1,8 +1,8 @@
 #pragma once
 
-namespace Motor {
 #include <Arduino.h>
 #include <Motor/MotorDriver/TB6612.hpp>
+namespace Motor {
 
 class DG01D_E {
   private:

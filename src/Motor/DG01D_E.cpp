@@ -1,7 +1,8 @@
 #include <Motor/DG01D_E.hpp>
+#include <Motor/MotorDriver/TB6612.hpp>
 
 Motor::DG01D_E::DG01D_E(int pin1, int pin2, int pin3, int pin4, int ch1, int ch2) {
-    motor_driver = Motor::MotorDriver::TB6612(pin1, pin2, ch1, ch2);
+    motor_driver.setPins(pin1, pin2, ch1, ch2);
     input_pin1   = pin3;
     input_pin2   = pin4;
     if (input_pin1 == -1) {
